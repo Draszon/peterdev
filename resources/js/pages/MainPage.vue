@@ -30,6 +30,7 @@ interface Project {
 }
 
 interface Technology {
+  id: number,
   sysadmin: string[],
   development: string[],
 }
@@ -291,7 +292,7 @@ const toggleMobileMenu = () => {
       </div>
 
       <div class="font-medium flex flex-col items-center gap-3 border-y-2 border-gray-500/10 py-5 sm:flex-row sm:justify-between sm:text-lg">
-        <a v-for="contact in props.contacts" class="w-fit" target="_blank" :href="contact.link">{{ contact.name }}</a>
+        <a v-for="contact in props.contacts" :key="contact.name" class="w-fit" target="_blank" :href="contact.link">{{ contact.name }}</a>
       </div>
 
       <div class="flex flex-col sm:flex-row gap-10">
@@ -339,7 +340,7 @@ const toggleMobileMenu = () => {
           <h3 class="font-ubuntu font-medium text-2xl"><a :href="project.link" target="_blank">{{ project.title }}</a></h3>
           <p>{{ project.content }}</p>
           <div class="flex flex-row flex-wrap gap-3">
-            <SkillsInfo v-for="tech in project.technology" :text="tech" />
+            <SkillsInfo v-for="tech in project.technology" :key="tech" :text="tech" />
           </div>
         </div>
       </div>
@@ -356,14 +357,14 @@ const toggleMobileMenu = () => {
       <div class="flex flex-col md:flex-row md:justify-center gap-10">
         <div class="bg-white border border-light-border rounded-3xl p-7 flex flex-col gap-7 md:max-w-md">
           <h3 class="uppercase text-light-text text-sm">Szerver és infrastruktúra</h3>
-          <div v-for="techs in technologies" class="flex flex-row flex-wrap gap-3">
+          <div v-for="techs in technologies" :key="techs.id" class="flex flex-row flex-wrap gap-3">
             <SkillsInfo v-for="tech in techs.sysadmin" :text="tech"/>
           </div>
         </div>
 
         <div class="bg-white border border-light-border rounded-3xl p-7 flex flex-col gap-7 md:max-w-md">
           <h3 class="uppercase text-light-text text-sm">Webfejlesztés</h3>
-          <div v-for="techs in technologies" class="flex flex-row flex-wrap gap-3">
+          <div v-for="techs in technologies" :key="techs.id" class="flex flex-row flex-wrap gap-3">
             <SkillsInfo v-for="tech in techs.development" :text="tech"/>
           </div>
         </div>
