@@ -35,12 +35,21 @@ interface Technology {
   development: string[],
 }
 
+interface Carrier {
+  id: number,
+  date: string,
+  title: string,
+  subtitle: string,
+  content: string,
+}
+
 interface Props {
   infos: Greetings[],
   contacts: Contacts[],
   about_mes: AboutMe[],
   projects: Project[],
   technologies: Technology[],
+  carriers: Carrier[],
 };
 
 interface MenuItem {
@@ -372,4 +381,14 @@ const toggleMobileMenu = () => {
     </div>
   </section>
     
+  <section id="me" class="w-full overflow-x-clip px-2 py-24 z-0 bg-light-section">
+    <div class="max-w-300 mx-auto flex flex-col gap-5">
+      <div class="w-full flex flex-col gap-7 mb-10">
+        <SectionSubtitle subtitle="idővonal" />
+        <SectionTitle title="Karrierút" />
+      </div>
+
+      
+    </div>
+  </section>
 </template>
